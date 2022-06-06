@@ -1,0 +1,7 @@
+/.vs/
+/Library/
+/obj/
+/Temp/
+*.csproj
+/Logs/
+/IAH-UnityProj.sln
