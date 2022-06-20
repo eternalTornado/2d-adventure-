@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public abstract class State : MonoBehaviour
 {
+    [SerializeField] protected State JumpState;
+    [SerializeField] protected State FallState;
+
     protected Agent _agent;
 
     public UnityEvent OnEnter;
@@ -60,7 +63,13 @@ public abstract class State : MonoBehaviour
 
     protected virtual void HandleOnJumpPressed()
     {
+        TestJumpState();
+    }
 
+    private void TestJumpState()
+    {
+        if (_agent._groundDetector.IsGrounded)
+            _agent.TransitionToState(JumpState);
     }
 
     protected virtual void HandleAttack()
@@ -68,6 +77,21 @@ public abstract class State : MonoBehaviour
 
     }
 
-    public virtual void StateUpdate() { }
+    public virtual void StateUpdate()
+    {
+        TestFalltransition();
+    }
+
+    protected bool TestFalltransition()
+    {
+        if (!_agent._groundDetector.IsGrounded)
+        {
+            _agent.TransitionToState(FallState);
+            return true;
+        }
+
+        return false;
+    }
+
     public virtual void StateFixedUpdate() { }
 }

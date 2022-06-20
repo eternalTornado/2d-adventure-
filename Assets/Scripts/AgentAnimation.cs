@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentAnimation : MonoBehaviour
 {
     private Animator animator;
+
+    public UnityEvent OnAnimationAction;
+    public UnityEvent OnAnimationEnd;
 
     private void Awake()
     {
@@ -19,6 +24,16 @@ public class AgentAnimation : MonoBehaviour
     private void Play(string animName)
     {
         animator.Play(animName, -1, 0);
+    }
+
+    internal void StopAnimation()
+    {
+        animator.enabled = false;
+    }
+
+    internal void StartAnimation()
+    {
+        animator.enabled = true;
     }
 }
 

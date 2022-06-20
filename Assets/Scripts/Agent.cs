@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Agent : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Agent : MonoBehaviour
     [HideInInspector] public Rigidbody2D _rb2d;
     [HideInInspector] public AgentAnimation _animationManager;
     [HideInInspector] public AgentRenderer _agentRenderer;
+    [HideInInspector] public GroundDetector _groundDetector;
+    [HideInInspector] public ClimbingDetector climbingDetector;
+
+    public AgentDataSO agentData;
 
     public State currentState;
     public State previousState;
@@ -16,7 +21,9 @@ public class Agent : MonoBehaviour
     public State IdleState;
 
     [Header("State Debugging:")]
-    public string stateName;    
+    public string stateName;
+
+    [SerializeField] UnityEvent OnRespawnRequired;
 
     private void Awake()
     {
@@ -24,9 +31,16 @@ public class Agent : MonoBehaviour
         _rb2d = this.GetComponent<Rigidbody2D>();
         _animationManager = this.GetComponentInChildren<AgentAnimation>();
         _agentRenderer = this.GetComponentInChildren<AgentRenderer>();
+        _groundDetector = this.GetComponentInChildren<GroundDetector>();
+        climbingDetector = this.GetComponentInChildren<ClimbingDetector>();
 
         foreach (var state in this.GetComponentsInChildren<State>())
             state.InitializeState(this);
+    }
+
+    public void AgentDied()
+    {
+        OnRespawnRequired?.Invoke();
     }
 
     private void Start()
@@ -43,6 +57,7 @@ public class Agent : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _groundDetector.CheckIsGrouded();
         currentState?.StateFixedUpdate();
     }
 
