@@ -35,6 +35,22 @@ public class AgentAnimation : MonoBehaviour
     {
         animator.enabled = true;
     }
+
+    public void ResetEvents()
+    {
+        OnAnimationAction.RemoveAllListeners();
+        OnAnimationEnd.RemoveAllListeners();
+    }
+
+    public void InvokeAnimationAction()
+    {
+        OnAnimationAction?.Invoke();
+    }
+
+    public void InvokeAnimationEnd()
+    {
+        OnAnimationEnd?.Invoke();
+    }
 }
 
 public enum AnimationType
