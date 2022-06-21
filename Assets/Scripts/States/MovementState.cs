@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MovementState : State
 {
     [SerializeField] protected MovementData movementData;
 
     public State IdleState;
+
+    public UnityEvent OnStep;
 
     private void Awake()
     {
@@ -18,9 +21,16 @@ public class MovementState : State
     {
         _agent._animationManager.PlayAnimation(AnimationType.Run);
 
+        _agent._animationManager.OnAnimationAction.AddListener(()=>OnStep.Invoke());
+
         movementData.horizontalMovementDirection = 0;
         movementData.currentSpeed = 0;
         movementData.currentVelocity = Vector2.zero;
+    }
+
+    protected override void ExitState()
+    {
+        _agent._animationManager.ResetEvents();
     }
 
     public override void StateUpdate()

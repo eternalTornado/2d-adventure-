@@ -5323,11 +5323,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bc457925542e444e83b02a188f5f772, type: 3}
---- !u!4 &245874864 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 783449201657740264, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
-  m_PrefabInstance: {fileID: 783449200060158068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &321732960
 GameObject:
   m_ObjectHideFlags: 0
@@ -12260,86 +12255,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &801030793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 801030794}
-  - component: {fileID: 801030796}
-  - component: {fileID: 801030795}
-  m_Layer: 0
-  m_Name: FallFeedback
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &801030794
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801030793}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 245874864}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &801030795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801030793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26d33f7df6564c8b8cd7229e3e71bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundDetector: {fileID: 0}
-  OnConditionValidAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 801030796}
-        m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
-        m_MethodName: PlayClip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &801030796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801030793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e256e96615546464a97d808fef01a1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  targetAudioSource: {fileID: 820557651}
-  volume: 1
---- !u!82 &820557651 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3132281111511980295, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
-  m_PrefabInstance: {fileID: 783449200060158068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &834499811
 GameObject:
   m_ObjectHideFlags: 0
@@ -14476,6 +14391,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 801030794, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 783449200114869544, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14507,7 +14426,7 @@ PrefabInstance:
     - target: {fileID: 783449201657740244, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
       propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 801030795}
+      objectReference: {fileID: 0}
     - target: {fileID: 783449201657740244, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
       propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -14574,6 +14493,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
+--- !u!1 &783449200060158069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 783449201725049886, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
+  m_PrefabInstance: {fileID: 783449200060158068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &783449200060158070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783449200060158069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176879b0953c040aa9de5dd606811001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData:
+  - {fileID: 11400000, guid: 64603209b31cc417fa363d6f5f9a62f3, type: 2}
 --- !u!1001 &2966427146512339940
 PrefabInstance:
   m_ObjectHideFlags: 0

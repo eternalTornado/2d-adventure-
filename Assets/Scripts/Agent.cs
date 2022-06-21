@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using WeaponSystem;
 
 public class Agent : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Agent : MonoBehaviour
 
     public State IdleState;
 
+    [HideInInspector] public AgentWeaponManager agentWeapon;
+
     [Header("State Debugging:")]
     public string stateName;
 
@@ -33,6 +36,7 @@ public class Agent : MonoBehaviour
         _agentRenderer = this.GetComponentInChildren<AgentRenderer>();
         _groundDetector = this.GetComponentInChildren<GroundDetector>();
         climbingDetector = this.GetComponentInChildren<ClimbingDetector>();
+        agentWeapon = this.GetComponentInChildren<AgentWeaponManager>();
 
         foreach (var state in this.GetComponentsInChildren<State>())
             state.InitializeState(this);
