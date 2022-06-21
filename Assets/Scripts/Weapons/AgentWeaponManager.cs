@@ -23,7 +23,7 @@ namespace WeaponSystem
             ToggleWeaponVisibility(false);
         }
 
-        private void ToggleWeaponVisibility(bool value)
+        public void ToggleWeaponVisibility(bool value)
         {
             if (value)
             {
@@ -32,7 +32,7 @@ namespace WeaponSystem
             spriteRenderer.enabled = value;
         }
 
-        private WeaponData GetCurrentWeapon()
+        public WeaponData GetCurrentWeapon()
         {
             return weaponStorage.GetCurrentWeapon();
         }

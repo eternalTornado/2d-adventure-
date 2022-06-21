@@ -9,41 +9,46 @@ public class ClimbingState : State
 
     protected override void EnterState()
     {
-        prevGravityScale = _agent._rb2d.gravityScale;
-        _agent._rb2d.gravityScale = 0f;
-        _agent._rb2d.velocity = Vector2.zero;
+        prevGravityScale = agent.rb2d.gravityScale;
+        agent.rb2d.gravityScale = 0f;
+        agent.rb2d.velocity = Vector2.zero;
 
-        _agent._animationManager.PlayAnimation(AnimationType.Climb);
-        _agent._animationManager.StopAnimation();
+        agent.animationManager.PlayAnimation(AnimationType.Climb);
+        agent.animationManager.StopAnimation();
     }
 
     protected override void HandleOnJumpPressed()
     {
-        _agent.TransitionToState(JumpState);
+        agent.TransitionToState(JumpState);
     }
 
     protected override void ExitState()
     {
-        _agent._rb2d.gravityScale = prevGravityScale;
+        agent.rb2d.gravityScale = prevGravityScale;
 
-        _agent._animationManager.StartAnimation();
+        agent.animationManager.StartAnimation();
+    }
+
+    protected override void HandleAttack()
+    {
+        
     }
 
     public override void StateUpdate()
     {
-        if (_agent._agentInput.movementVector.magnitude > 0)
+        if (agent._agentInput.movementVector.magnitude > 0)
         {
-            _agent._animationManager.StartAnimation();
-            _agent._rb2d.velocity = new Vector2(_agent._agentInput.movementVector.x * _agent.agentData.climbHorizontalSpeed,
-                _agent._agentInput.movementVector.y * _agent.agentData.climbVerticalSpeed);
+            agent.animationManager.StartAnimation();
+            agent.rb2d.velocity = new Vector2(agent._agentInput.movementVector.x * agent.agentData.climbHorizontalSpeed,
+                agent._agentInput.movementVector.y * agent.agentData.climbVerticalSpeed);
         }
         else
         {
-            _agent._rb2d.velocity = Vector2.zero;
-            _agent._animationManager.StopAnimation();
+            agent.rb2d.velocity = Vector2.zero;
+            agent.animationManager.StopAnimation();
         }
 
-        if (!_agent.climbingDetector.CanClimb)
-            _agent.TransitionToState(IdleState);    
+        if (!agent.climbingDetector.CanClimb)
+            agent.TransitionToState(IdleState);    
     }
 }

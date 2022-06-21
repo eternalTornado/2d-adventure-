@@ -8,24 +8,24 @@ public class FallState : MovementState
 
     protected override void EnterState()
     {
-        _agent._animationManager.PlayAnimation(AnimationType.Fall);
+        agent.animationManager.PlayAnimation(AnimationType.Fall);
 
     }
 
     public override void StateUpdate()
     {
-        movementData.currentVelocity = _agent._rb2d.velocity;
-        movementData.currentVelocity.y += _agent.agentData.gravityModifier * Physics2D.gravity.y * Time.deltaTime;
-        _agent._rb2d.velocity = movementData.currentVelocity;
+        movementData.currentVelocity = agent.rb2d.velocity;
+        movementData.currentVelocity.y += agent.agentData.gravityModifier * Physics2D.gravity.y * Time.deltaTime;
+        agent.rb2d.velocity = movementData.currentVelocity;
 
         CalculateVelocity();
         SetPlayerVelocity();
 
-        if (_agent._groundDetector.IsGrounded)
-            _agent.TransitionToState(IdleState);
-        else if(_agent.climbingDetector.CanClimb && Mathf.Abs(_agent._agentInput.movementVector.y) > 0)
+        if (agent.groundDetector.IsGrounded)
+            agent.TransitionToState(IdleState);
+        else if(agent.climbingDetector.CanClimb && Mathf.Abs(agent._agentInput.movementVector.y) > 0)
         {
-            _agent.TransitionToState(ClimbState);
+            agent.TransitionToState(ClimbState);
         }
     }
 

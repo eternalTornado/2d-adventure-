@@ -10,10 +10,10 @@ public class JumpState : MovementState
 
     protected override void EnterState()
     {
-        _agent._animationManager.PlayAnimation(AnimationType.Jump);
-        movementData.currentVelocity = _agent._rb2d.velocity;
-        movementData.currentVelocity.y = _agent.agentData.jumpForce;
-        _agent._rb2d.velocity = movementData.currentVelocity;
+        agent.animationManager.PlayAnimation(AnimationType.Jump);
+        movementData.currentVelocity = agent.rb2d.velocity;
+        movementData.currentVelocity.y = agent.agentData.jumpForce;
+        agent.rb2d.velocity = movementData.currentVelocity;
 
         jumpPressed = true;
     }
@@ -24,11 +24,11 @@ public class JumpState : MovementState
         CalculateVelocity();
         SetPlayerVelocity();
 
-        if (_agent._rb2d.velocity.y <= 0)
-            _agent.TransitionToState(FallState);
-        else if(_agent.climbingDetector.CanClimb && Mathf.Abs(_agent._agentInput.movementVector.y) > 0)
+        if (agent.rb2d.velocity.y <= 0)
+            agent.TransitionToState(FallState);
+        else if(agent.climbingDetector.CanClimb && Mathf.Abs(agent._agentInput.movementVector.y) > 0)
         {
-            _agent.TransitionToState(ClimbState);
+            agent.TransitionToState(ClimbState);
         }
     }
 
@@ -46,9 +46,9 @@ public class JumpState : MovementState
     {
         if (!jumpPressed)
         {
-            movementData.currentVelocity = _agent._rb2d.velocity;
-            movementData.currentVelocity.y += _agent.agentData.lowJumpMultiplier * Physics2D.gravity.y * Time.deltaTime;
-            _agent._rb2d.velocity = movementData.currentVelocity;
+            movementData.currentVelocity = agent.rb2d.velocity;
+            movementData.currentVelocity.y += agent.agentData.lowJumpMultiplier * Physics2D.gravity.y * Time.deltaTime;
+            agent.rb2d.velocity = movementData.currentVelocity;
         }
     }
 }

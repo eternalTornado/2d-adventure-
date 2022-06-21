@@ -8,23 +8,24 @@ public abstract class State : MonoBehaviour
 {
     [SerializeField] protected State JumpState;
     [SerializeField] protected State FallState;
+    [SerializeField] protected State AttackState;
 
-    protected Agent _agent;
+    protected Agent agent;
 
     public UnityEvent OnEnter;
     public UnityEvent OnExit;
 
     public void InitializeState(Agent agent)
     {
-        _agent = agent;
+        this.agent = agent;
     }
 
     public void Enter()
     {
-        _agent._agentInput.OnAttack += HandleAttack;
-        _agent._agentInput.OnJumpPressed += HandleOnJumpPressed;
-        _agent._agentInput.OnJumpReleased += HandleOnJumpReleased;
-        _agent._agentInput.OnMovement += HandleOnMovement;
+        agent._agentInput.OnAttack += HandleAttack;
+        agent._agentInput.OnJumpPressed += HandleOnJumpPressed;
+        agent._agentInput.OnJumpReleased += HandleOnJumpReleased;
+        agent._agentInput.OnMovement += HandleOnMovement;
 
         OnEnter?.Invoke();
         EnterState();
@@ -32,10 +33,10 @@ public abstract class State : MonoBehaviour
 
     public void Exit()
     {
-        _agent._agentInput.OnAttack -= HandleAttack;
-        _agent._agentInput.OnJumpPressed -= HandleOnJumpPressed;
-        _agent._agentInput.OnJumpReleased -= HandleOnJumpReleased;
-        _agent._agentInput.OnMovement -= HandleOnMovement;
+        agent._agentInput.OnAttack -= HandleAttack;
+        agent._agentInput.OnJumpPressed -= HandleOnJumpPressed;
+        agent._agentInput.OnJumpReleased -= HandleOnJumpReleased;
+        agent._agentInput.OnMovement -= HandleOnMovement;
 
         OnExit?.Invoke();
         ExitState();
@@ -68,13 +69,13 @@ public abstract class State : MonoBehaviour
 
     private void TestJumpState()
     {
-        if (_agent._groundDetector.IsGrounded)
-            _agent.TransitionToState(JumpState);
+        if (agent.groundDetector.IsGrounded)
+            agent.TransitionToState(JumpState);
     }
 
     protected virtual void HandleAttack()
     {
-
+        TestAttackTransition();
     }
 
     public virtual void StateUpdate()
@@ -84,9 +85,9 @@ public abstract class State : MonoBehaviour
 
     protected bool TestFalltransition()
     {
-        if (!_agent._groundDetector.IsGrounded)
+        if (!agent.groundDetector.IsGrounded)
         {
-            _agent.TransitionToState(FallState);
+            agent.TransitionToState(FallState);
             return true;
         }
 
@@ -94,4 +95,12 @@ public abstract class State : MonoBehaviour
     }
 
     public virtual void StateFixedUpdate() { }
+
+    protected virtual void TestAttackTransition()
+    {
+        if (agent.agentWeapon.CanIUseWeapon(agent.groundDetector.IsGrounded))
+        {
+            agent.TransitionToState(AttackState); 
+        }
+    }
 }

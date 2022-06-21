@@ -19,9 +19,9 @@ public class MovementState : State
 
     protected override void EnterState()
     {
-        _agent._animationManager.PlayAnimation(AnimationType.Run);
+        agent.animationManager.PlayAnimation(AnimationType.Run);
 
-        _agent._animationManager.OnAnimationAction.AddListener(()=>OnStep.Invoke());
+        agent.animationManager.OnAnimationAction.AddListener(()=>OnStep.Invoke());
 
         movementData.horizontalMovementDirection = 0;
         movementData.currentSpeed = 0;
@@ -30,7 +30,7 @@ public class MovementState : State
 
     protected override void ExitState()
     {
-        _agent._animationManager.ResetEvents();
+        agent.animationManager.ResetEvents();
     }
 
     public override void StateUpdate()
@@ -40,38 +40,38 @@ public class MovementState : State
 
         CalculateVelocity();
         SetPlayerVelocity();
-        if (Mathf.Abs(_agent._rb2d.velocity.x) < 0.01f)
-            _agent.TransitionToState(IdleState);
+        if (Mathf.Abs(agent.rb2d.velocity.x) < 0.01f)
+            agent.TransitionToState(IdleState);
     }
 
     protected void SetPlayerVelocity()
     {
-        _agent._rb2d.velocity = movementData.currentVelocity;
+        agent.rb2d.velocity = movementData.currentVelocity;
     }
 
     protected void CalculateVelocity()
     {
-        CalculateSpeed(_agent._agentInput.movementVector, movementData);
+        CalculateSpeed(agent._agentInput.movementVector, movementData);
         CalculateHorizontalDirection(movementData);
         movementData.currentVelocity = Vector3.right * movementData.horizontalMovementDirection * movementData.currentSpeed;
-        movementData.currentVelocity.y = _agent._rb2d.velocity.y;
+        movementData.currentVelocity.y = agent.rb2d.velocity.y;
     }
 
     protected void CalculateHorizontalDirection(MovementData movementData)
     {
-        if (_agent._agentInput.movementVector.x > 0)
+        if (agent._agentInput.movementVector.x > 0)
             movementData.horizontalMovementDirection = 1;
-        else if(_agent._agentInput.movementVector.x < 0 )
+        else if(agent._agentInput.movementVector.x < 0 )
             movementData.horizontalMovementDirection = -1;
     }
 
     protected void CalculateSpeed(Vector2 movementVector, MovementData movementData)
     {
         if (Mathf.Abs(movementVector.x) > 0)
-            movementData.currentSpeed += _agent.agentData.acceleration * Time.deltaTime;
+            movementData.currentSpeed += agent.agentData.acceleration * Time.deltaTime;
         else
-            movementData.currentSpeed -= _agent.agentData.deacceleration * Time.deltaTime;
+            movementData.currentSpeed -= agent.agentData.deacceleration * Time.deltaTime;
 
-        movementData.currentSpeed = Mathf.Clamp(movementData.currentSpeed, 0f, _agent.agentData.maxSpeed);
+        movementData.currentSpeed = Mathf.Clamp(movementData.currentSpeed, 0f, agent.agentData.maxSpeed);
     }
 }

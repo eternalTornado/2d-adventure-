@@ -8,10 +8,10 @@ using WeaponSystem;
 public class Agent : MonoBehaviour
 {
     [HideInInspector] public PlayerInput _agentInput;
-    [HideInInspector] public Rigidbody2D _rb2d;
-    [HideInInspector] public AgentAnimation _animationManager;
+    [HideInInspector] public Rigidbody2D rb2d;
+    [HideInInspector] public AgentAnimation animationManager;
     [HideInInspector] public AgentRenderer _agentRenderer;
-    [HideInInspector] public GroundDetector _groundDetector;
+    [HideInInspector] public GroundDetector groundDetector;
     [HideInInspector] public ClimbingDetector climbingDetector;
 
     public AgentDataSO agentData;
@@ -31,10 +31,10 @@ public class Agent : MonoBehaviour
     private void Awake()
     {
         _agentInput = this.GetComponentInParent<PlayerInput>();
-        _rb2d = this.GetComponent<Rigidbody2D>();
-        _animationManager = this.GetComponentInChildren<AgentAnimation>();
+        rb2d = this.GetComponent<Rigidbody2D>();
+        animationManager = this.GetComponentInChildren<AgentAnimation>();
         _agentRenderer = this.GetComponentInChildren<AgentRenderer>();
-        _groundDetector = this.GetComponentInChildren<GroundDetector>();
+        groundDetector = this.GetComponentInChildren<GroundDetector>();
         climbingDetector = this.GetComponentInChildren<ClimbingDetector>();
         agentWeapon = this.GetComponentInChildren<AgentWeaponManager>();
 
@@ -61,7 +61,7 @@ public class Agent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _groundDetector.CheckIsGrouded();
+        groundDetector.CheckIsGrouded();
         currentState?.StateFixedUpdate();
     }
 
