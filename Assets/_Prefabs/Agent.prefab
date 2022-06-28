@@ -279,17 +279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82fb8e4468e2944396ceb32d1a006c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpState: {fileID: 218172969501123422}
-  FallState: {fileID: 218172969501123425}
-  AttackState: {fileID: 8389325432165075651}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  MoveState: {fileID: 218172969501123423}
-  ClimbingState: {fileID: 218172969501123424}
 --- !u!114 &218172969501123423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,9 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a800c44763346841bf4a835e24fbeb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpState: {fileID: 218172969501123422}
-  FallState: {fileID: 218172969501123425}
-  AttackState: {fileID: 8389325432165075651}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -312,7 +304,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementData: {fileID: 218172969731451648}
-  IdleState: {fileID: 218172969501123420}
   OnStep:
     m_PersistentCalls:
       m_Calls:
@@ -340,9 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac1eb7c4f614044f9d159a58bb35029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpState: {fileID: 0}
-  FallState: {fileID: 218172969501123425}
-  AttackState: {fileID: 8389325432165075651}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -350,11 +338,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementData: {fileID: 0}
-  IdleState: {fileID: 218172969501123420}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
-  ClimbState: {fileID: 218172969501123424}
 --- !u!114 &218172969501123425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,9 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6a37296dc2e6644b93b8858ef58db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpState: {fileID: 218172969501123422}
-  FallState: {fileID: 218172969501123425}
-  AttackState: {fileID: 8389325432165075651}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -377,11 +360,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movementData: {fileID: 0}
-  IdleState: {fileID: 218172969501123420}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
-  ClimbState: {fileID: 218172969501123424}
 --- !u!114 &218172969501123424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,16 +375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7877d7f0d0e434444a959ca20fe6614e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpState: {fileID: 218172969501123422}
-  FallState: {fileID: 218172969501123425}
-  AttackState: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  IdleState: {fileID: 218172969501123420}
 --- !u!114 &8389325432165075651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,16 +393,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f5e1d72097d714ca2017d4027ee4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpState: {fileID: 218172969501123422}
-  FallState: {fileID: 218172969501123425}
-  AttackState: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  IdleState: {fileID: 218172969501123420}
   hittableMask:
     serializedVersion: 2
     m_Bits: 0
@@ -446,6 +419,7 @@ GameObject:
   - component: {fileID: 218172969731451649}
   - component: {fileID: 218172969731451648}
   - component: {fileID: 218172969731451651}
+  - component: {fileID: 4307626561584115641}
   m_Layer: 3
   m_Name: Agent
   m_TagString: Player
@@ -510,6 +484,7 @@ MonoBehaviour:
   _agentRenderer: {fileID: 0}
   groundDetector: {fileID: 0}
   climbingDetector: {fileID: 0}
+  stateFactory: {fileID: 0}
   agentData: {fileID: 11400000, guid: 07b6e3785ab824c4f860e434f5ae320b, type: 2}
   currentState: {fileID: 0}
   previousState: {fileID: 0}
@@ -560,6 +535,59 @@ CapsuleCollider2D:
   m_Offset: {x: -0.016993105, y: -0.07137096}
   m_Size: {x: 0.5543779, y: 1.1427419}
   m_Direction: 0
+--- !u!114 &4307626561584115641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218172969731451772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52780b64786474542aaea345594b6bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 218172969731451649}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: GetHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 218172969731451649}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: AgentDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAddHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInitializeMaxHealth:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &534793153259967564
 GameObject:
   m_ObjectHideFlags: 0

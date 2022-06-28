@@ -8,8 +8,6 @@ public class MovementState : State
 {
     [SerializeField] protected MovementData movementData;
 
-    public State IdleState;
-
     public UnityEvent OnStep;
 
     private void Awake()
@@ -41,7 +39,7 @@ public class MovementState : State
         CalculateVelocity();
         SetPlayerVelocity();
         if (Mathf.Abs(agent.rb2d.velocity.x) < 0.01f)
-            agent.TransitionToState(IdleState);
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Idle));
     }
 
     protected void SetPlayerVelocity()

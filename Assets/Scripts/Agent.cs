@@ -13,8 +13,10 @@ public class Agent : MonoBehaviour
     [HideInInspector] public AgentRenderer _agentRenderer;
     [HideInInspector] public GroundDetector groundDetector;
     [HideInInspector] public ClimbingDetector climbingDetector;
+    [HideInInspector] public StateFactory stateFactory;
 
     public AgentDataSO agentData;
+    private Damagable damagable;
 
     public State currentState;
     public State previousState;
@@ -37,9 +39,23 @@ public class Agent : MonoBehaviour
         groundDetector = this.GetComponentInChildren<GroundDetector>();
         climbingDetector = this.GetComponentInChildren<ClimbingDetector>();
         agentWeapon = this.GetComponentInChildren<AgentWeaponManager>();
+        stateFactory = this.GetComponentInChildren<StateFactory>();
+        damagable = this.GetComponent<Damagable>();
 
-        foreach (var state in this.GetComponentsInChildren<State>())
-            state.InitializeState(this);
+        stateFactory.InitializeStates(this);
+    }
+
+    private void Start()
+    {
+        _agentInput.OnMovement += _agentRenderer.FaceDirection;
+
+        InitializeAgent();
+    }
+
+    private void InitializeAgent()
+    {
+        TransitionToState(IdleState);
+        damagable.Initialize(agentData.health);
     }
 
     public void AgentDied()
@@ -47,11 +63,9 @@ public class Agent : MonoBehaviour
         OnRespawnRequired?.Invoke();
     }
 
-    private void Start()
+    public void GetHit()
     {
-        _agentInput.OnMovement += _agentRenderer.FaceDirection;
-
-        TransitionToState(IdleState);
+        currentState?.GetHit();
     }
 
     private void Update()

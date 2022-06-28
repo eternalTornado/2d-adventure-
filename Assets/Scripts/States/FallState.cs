@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FallState : MovementState
 {
-    [SerializeField] State ClimbState;
-
     protected override void EnterState()
     {
         agent.animationManager.PlayAnimation(AnimationType.Fall);
@@ -22,10 +20,10 @@ public class FallState : MovementState
         SetPlayerVelocity();
 
         if (agent.groundDetector.IsGrounded)
-            agent.TransitionToState(IdleState);
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Idle));
         else if(agent.climbingDetector.CanClimb && Mathf.Abs(agent._agentInput.movementVector.y) > 0)
         {
-            agent.TransitionToState(ClimbState);
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Climbing));
         }
     }
 

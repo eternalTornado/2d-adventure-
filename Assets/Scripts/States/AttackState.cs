@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class AttackState : State
 {
-    [SerializeField] protected State IdleState;
     public LayerMask hittableMask;
 
     protected Vector2 direction;
@@ -42,9 +41,9 @@ public class AttackState : State
     {
         agent.animationManager.OnAnimationEnd.RemoveListener(TransitionToIdleState);
         if (agent.groundDetector.IsGrounded)
-            agent.TransitionToState(IdleState);
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Idle));
         else
-            agent.TransitionToState(FallState);
+            agent.TransitionToState(agent.stateFactory.GetState(StateType.Fall));
     }
 
     private void OnDrawGizmos()
