@@ -63,5 +63,6 @@ public enum AnimationType
     Jump,
     Fall,
     Climb,
-    Land
+    Land,
+    GetHit
 }

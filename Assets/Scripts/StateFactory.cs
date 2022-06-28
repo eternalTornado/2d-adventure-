@@ -11,6 +11,8 @@ public class StateFactory : MonoBehaviour
     [SerializeField] State Fall;
     [SerializeField] State Climbing;
     [SerializeField] State Attack;
+    [SerializeField] State GetHit;
+    [SerializeField] State Die;
 
     public State GetState(StateType type)
     {
@@ -22,6 +24,8 @@ public class StateFactory : MonoBehaviour
             case StateType.Fall: return Fall;
             case StateType.Climbing: return Climbing;
             case StateType.Attack: return Attack;
+            case StateType.GetHit: return GetHit;
+            case StateType.Die: return Die;
         }
 
         return null;
@@ -41,5 +45,7 @@ public enum StateType
     Jump,
     Fall,
     Climbing,
-    Attack
+    Attack,
+    GetHit,
+    Die
 }

@@ -29,6 +29,7 @@ public class Agent : MonoBehaviour
     public string stateName;
 
     [SerializeField] UnityEvent OnRespawnRequired;
+    public UnityEvent OnAgentDie;
 
     private void Awake()
     {
@@ -60,7 +61,10 @@ public class Agent : MonoBehaviour
 
     public void AgentDied()
     {
-        OnRespawnRequired?.Invoke();
+        if (damagable.CurrentHealth > 0)
+            OnRespawnRequired?.Invoke();
+        else
+            currentState?.Die();
     }
 
     public void GetHit()

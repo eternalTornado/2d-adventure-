@@ -79,9 +79,9 @@ public abstract class State : MonoBehaviour
         TestFalltransition();
     }
 
-    public void GetHit()
+    public virtual void GetHit()
     {
-
+        agent.TransitionToState(agent.stateFactory.GetState(StateType.GetHit));
     }
 
     protected bool TestFalltransition()
@@ -96,6 +96,11 @@ public abstract class State : MonoBehaviour
     }
 
     public virtual void StateFixedUpdate() { }
+
+    public virtual void Die()
+    {
+        agent.TransitionToState(agent.stateFactory.GetState(StateType.Die));
+    }
 
     protected virtual void TestAttackTransition()
     {
