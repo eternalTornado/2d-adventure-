@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.07, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1816692246613351814}
   m_Father: {fileID: 0}
@@ -90,6 +91,10 @@ PrefabInstance:
       propertyPath: m_Direction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 218172969731451649, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: agentData
+      value: 
+      objectReference: {fileID: 11400000, guid: c370f62160991554ba6e31ae0c24b715, type: 2}
     - target: {fileID: 218172969731451651, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: m_Size.x
       value: 2.0050416
@@ -162,6 +167,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2742803603316987685, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b76c0737eaa3eb44a40c3de99f8a112, type: 3}
+    - target: {fileID: 3376745003849288843, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d16bc037559a1a9459bf0766771e943e, type: 3}
+    - target: {fileID: 6851883362937059614, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 930cae622dddea944a2e385859748098, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
 --- !u!4 &1816692246613351814 stripped
