@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour, IAgentInput
 {
     public Vector2 movementVector { get; set; }
 
@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
             OnJumpPressed?.Invoke();
 
         if (Input.GetKeyUp(jumpKey))
-            OnJumpReleased?.Invoke();   
+            OnJumpReleased?.Invoke();
     }
 
     private void GetAttackInput()

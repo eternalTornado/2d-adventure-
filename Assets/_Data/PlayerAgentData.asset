@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae366c3cfbda3b479c0d463c7f7763e, type: 3}
   m_Name: PlayerAgentData
   m_EditorClassIdentifier: 
-  health: 4
+  health: 5
   maxSpeed: 6
   acceleration: 50
   deacceleration: 50

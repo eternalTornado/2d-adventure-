@@ -48,11 +48,11 @@ public class AttackState : State
 
     private void OnDrawGizmos()
     {
-        if (!Application.isPlaying) return;
-        if (!showGizmos) return;
+        //if (!Application.isPlaying) return;
+        //if (!showGizmos) return;
 
-        Gizmos.color = Color.red;
-        agent.agentWeapon.GetCurrentWeapon().DrawWeaponGizmos(agent.transform.position, direction);
+        //Gizmos.color = Color.red;
+        //agent.agentWeapon.GetCurrentWeapon().DrawWeaponGizmos(agent.transform.position, direction);
     }
 
     protected override void HandleAttack()

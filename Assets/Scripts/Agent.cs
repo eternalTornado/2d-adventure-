@@ -7,7 +7,7 @@ using WeaponSystem;
 
 public class Agent : MonoBehaviour
 {
-    [HideInInspector] public PlayerInput _agentInput;
+    [HideInInspector] public IAgentInput _agentInput;
     [HideInInspector] public Rigidbody2D rb2d;
     [HideInInspector] public AgentAnimation animationManager;
     [HideInInspector] public AgentRenderer _agentRenderer;
@@ -21,8 +21,6 @@ public class Agent : MonoBehaviour
     public State currentState;
     public State previousState;
 
-    public State IdleState;
-
     [HideInInspector] public AgentWeaponManager agentWeapon;
 
     [Header("State Debugging:")]
@@ -33,7 +31,7 @@ public class Agent : MonoBehaviour
 
     private void Awake()
     {
-        _agentInput = this.GetComponentInParent<PlayerInput>();
+        _agentInput = this.GetComponentInParent<IAgentInput>();
         rb2d = this.GetComponent<Rigidbody2D>();
         animationManager = this.GetComponentInChildren<AgentAnimation>();
         _agentRenderer = this.GetComponentInChildren<AgentRenderer>();
@@ -55,7 +53,7 @@ public class Agent : MonoBehaviour
 
     private void InitializeAgent()
     {
-        TransitionToState(IdleState);
+        TransitionToState(stateFactory.GetState(StateType.Idle));
         damagable.Initialize(agentData.health);
     }
 

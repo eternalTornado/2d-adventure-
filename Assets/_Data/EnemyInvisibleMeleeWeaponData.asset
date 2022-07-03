@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae366c3cfbda3b479c0d463c7f7763e, type: 3}
-  m_Name: LizardEnemyAgentData
+  m_Script: {fileID: 11500000, guid: fc2e0818685e9408297b29167307ad92, type: 3}
+  m_Name: EnemyInvisibleMeleeWeaponData
   m_EditorClassIdentifier: 
-  health: 2
-  maxSpeed: 3
-  acceleration: 50
-  deacceleration: 50
-  jumpForce: 12
-  lowJumpMultiplier: 2
-  gravityModifier: 0.5
-  climbHorizontalSpeed: 2
-  climbVerticalSpeed: 5
+  weaponName: EnemyMelee
+  weaponSprite: {fileID: 0}
+  weaponDamage: 1
+  weaponSwingSound: {fileID: 8300000, guid: 2b9ed4235de8fa544b776e7b99e3f1ef, type: 3}
+  attackRange: 1.1
