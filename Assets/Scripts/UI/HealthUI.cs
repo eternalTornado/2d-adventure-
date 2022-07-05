@@ -11,7 +11,7 @@ public class HealthUI : MonoBehaviour
 
     private void Start()
     {
-        Initialize(4);
+        Initialize(5);
     }
 
     public void Initialize(int maxHealth)

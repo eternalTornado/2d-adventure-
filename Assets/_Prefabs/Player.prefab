@@ -163,6 +163,53 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776121670}
   m_Enabled: 1
+--- !u!1 &71123861094499223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5719255440708490010}
+  - component: {fileID: 2218383623691041619}
+  m_Layer: 3
+  m_Name: HealthPickable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5719255440708490010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71123861094499223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879079157017405058}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2218383623691041619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71123861094499223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e256e96615546464a97d808fef01a1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a10693f8c022716408a8f5373b2f2e11, type: 3}
+  targetAudioSource: {fileID: 3132281111511980295}
+  volume: 1
 --- !u!1 &783449200693948016
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +840,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData:
   - {fileID: 11400000, guid: 64603209b31cc417fa363d6f5f9a62f3, type: 2}
+--- !u!1 &3205421135602554307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879079157017405058}
+  m_Layer: 3
+  m_Name: PickableFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &879079157017405058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205421135602554307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5719255440708490010}
+  m_Father: {fileID: 783449201962185675}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &709393688331786421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,12 +1096,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f25b087c805825847b8e4c620d9bc989, type: 3}
     - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2218383623691041619}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayClip
       objectReference: {fileID: 0}
     - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1049,12 +1148,20 @@ PrefabInstance:
       value: Initialize
       objectReference: {fileID: 0}
     - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioFeedback, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: HealthUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: HealthUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
+      propertyPath: OnAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4307626561584115641, guid: b5ed12ae42dae85469ca9ae8e042111a, type: 3}
       propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
