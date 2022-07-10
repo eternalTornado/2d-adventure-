@@ -63,7 +63,7 @@ namespace WeaponSystem
         public void PickUpWeapon(WeaponData weaponData)
         {
             AddWeaponData(weaponData);
-            OnWeaponPickup?.Invoke();
+            OnWeaponPickup.Invoke();
         }
 
         public bool CanIUseWeapon(bool isGrounded)

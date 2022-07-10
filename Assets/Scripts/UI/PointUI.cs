@@ -15,11 +15,6 @@ public class PointUI : MonoBehaviour
         txtPoint = this.GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    private void Start()
-    {
-        SetPoints(99);
-    }
-
     public void SetPoints(int value)
     {
         txtPoint.text = value.ToString();

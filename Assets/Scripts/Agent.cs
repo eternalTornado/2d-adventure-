@@ -11,6 +11,7 @@ public class Agent : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb2d;
     [HideInInspector] public AgentAnimation animationManager;
     [HideInInspector] public AgentRenderer _agentRenderer;
+
     [HideInInspector] public GroundDetector groundDetector;
     [HideInInspector] public ClimbingDetector climbingDetector;
     [HideInInspector] public StateFactory stateFactory;
@@ -49,6 +50,15 @@ public class Agent : MonoBehaviour
         _agentInput.OnMovement += _agentRenderer.FaceDirection;
 
         InitializeAgent();
+
+        _agentInput.OnWeaponChange += SwapWeapon;
+    }
+
+    private void SwapWeapon()
+    {
+        if (agentWeapon == null) return;
+
+        agentWeapon.SwapWeapon();
     }
 
     private void InitializeAgent()
@@ -90,6 +100,13 @@ public class Agent : MonoBehaviour
         currentState.Enter();
 
         DisplayState();
+    }
+
+    public void PickUp(WeaponData weaponData)
+    {
+        if (agentWeapon == null) return;
+
+        agentWeapon.PickUpWeapon(weaponData);
     }
 
     private void DisplayState()

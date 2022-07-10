@@ -21,7 +21,7 @@ public class DestroyFallingObjects : MonoBehaviour
         if(collider != null)
         {
             var agent = collider.GetComponent<Agent>();
-            if(agent == null)
+            if(agent != null)
             {
                 Destroy(agent.gameObject);
                 return;
