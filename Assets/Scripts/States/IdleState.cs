@@ -11,15 +11,29 @@ public class IdleState : State
             agent.rb2d.velocity = Vector2.zero;
     }
 
-    protected override void HandleOnMovement(Vector2 input)
+    public override void StateUpdate()
     {
-        if(Mathf.Abs(input.y) > 0 && agent.climbingDetector.CanClimb)
+        if (TestFalltransition()) return;
+
+        if (Mathf.Abs(agent._agentInput.movementVector.y) > 0 && agent.climbingDetector.CanClimb)
         {
             agent.TransitionToState(agent.stateFactory.GetState(StateType.Climbing));
         }
-        if (Mathf.Abs(input.x) > 0.01f)
+        if (Mathf.Abs(agent._agentInput.movementVector.x) > 0.01f)
         {
             agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
         }
     }
+
+    //protected override void HandleOnMovement(Vector2 input)
+    //{
+    //    if(Mathf.Abs(input.y) > 0 && agent.climbingDetector.CanClimb)
+    //    {
+    //        agent.TransitionToState(agent.stateFactory.GetState(StateType.Climbing));
+    //    }
+    //    if (Mathf.Abs(input.x) > 0.01f)
+    //    {
+    //        agent.TransitionToState(agent.stateFactory.GetState(StateType.Move));
+    //    }
+    //}
 }

@@ -10,6 +10,11 @@ public class GetHitState : State
         agent.animationManager.OnAnimationEnd.AddListener(TransitionToIdle);
     }
 
+    protected override void ExitState()
+    {
+        agent.animationManager.OnAnimationEnd.RemoveListener(TransitionToIdle);
+    }
+
     private void TransitionToIdle()
     {
         agent.TransitionToState(agent.stateFactory.GetState(StateType.Idle));

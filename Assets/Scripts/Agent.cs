@@ -111,6 +111,6 @@ public class Agent : MonoBehaviour
 
     private void DisplayState()
     {
-        stateName = currentState?.name ?? string.Empty;
+        stateName = currentState?.GetType().ToString() ?? string.Empty;
     }
 }
