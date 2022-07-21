@@ -6,7 +6,7 @@ public class AIPlayerDetector : MonoBehaviour
 {
     [SerializeField] public bool PlayerDetected { get; private set; }
 
-    public Vector2 DirectionToTarget => target.transform.position - detectorOrigin.position;
+    public Vector2 DirectionToTarget => (target.transform.position - detectorOrigin.position);
 
     [SerializeField] private Transform detectorOrigin;
     public Vector2 detectorSize = Vector2.zero;

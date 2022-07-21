@@ -21,11 +21,11 @@ public class DestroyFallingObjects : MonoBehaviour
         if(collider != null)
         {
             var agent = collider.GetComponent<Agent>();
-            //if(agent != null)
-            //{
-            //    Destroy(agent.gameObject);
-            //    return;
-            //}
+            if(agent != null && !agent.CompareTag("Player"))
+            {
+                Destroy(agent.gameObject);
+                return;
+            }
             var damagable = agent.GetComponent<Damagable>();
             if (damagable != null)
             {

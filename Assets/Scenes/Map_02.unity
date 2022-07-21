@@ -9792,7 +9792,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369901468}
-  - component: {fileID: 369901469}
   m_Layer: 0
   m_Name: ---Camera
   m_TagString: Untagged
@@ -9818,19 +9817,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &369901469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369901467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5f9728116fed24e942ed8e61c3608b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cm_camera: {fileID: 834499813}
 --- !u!1001 &370387857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11716,53 +11702,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &727892345
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 727892346}
-  - component: {fileID: 727892347}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &727892346
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727892345}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &727892347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727892345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae52cc8a3233ef4e83d70b4b4571914, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraManager: {fileID: 369901469}
-  spawnPointManager: {fileID: 1552275343}
-  player: {fileID: 783449200060158069}
 --- !u!1 &744079813
 GameObject:
   m_ObjectHideFlags: 0
@@ -15830,17 +15769,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
---- !u!114 &783449200060158069 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 783449201962185652, guid: e0fc5c55ca562e948ab67508dc18dafd, type: 3}
-  m_PrefabInstance: {fileID: 783449200060158068}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54b503d51f405f449e3e39e540d0f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1456032327690185691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15952,10 +15880,6 @@ PrefabInstance:
     - target: {fileID: 1887347794616481038, guid: c3db10c6dd9804286bfb76614c4004eb, type: 3}
       propertyPath: m_Name
       value: LizardEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887347794616481038, guid: c3db10c6dd9804286bfb76614c4004eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3db10c6dd9804286bfb76614c4004eb, type: 3}

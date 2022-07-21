@@ -17,13 +17,13 @@ public class UIScaleElement : MonoBehaviour
     private void Start()
     {
         baseScale = element.localScale;
-        endScale = baseScale * animationEndScale;
+        endScale = Vector3.one * animationEndScale;
 
         if (playConstantly)
         {
             sequence = DOTween.Sequence();
-            sequence.Append(element.DOScale(endScale, animationTime));
             sequence.Append(element.DOScale(baseScale, animationTime));
+            sequence.Append(element.DOScale(endScale, animationTime));
             sequence.SetLoops(-1, LoopType.Yoyo);
             sequence.Play();
         }
